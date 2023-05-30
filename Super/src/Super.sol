@@ -19,5 +19,8 @@ contract Super is HelloWorld {
         return "Hi there!";
     }
 
+    function getGreetings() public pure  returns(string memory) {
+        return super.greetings();
+    }
     // your code here
 }
