@@ -6,6 +6,7 @@ contract WhoCalledMe {
 
     function callMe() public {
         // use msg.sender to store the address
+        caller = msg.sender;
         // of the person who called this contract
     }
 }
