@@ -96,7 +96,7 @@ contract IdiotBettingTest is Test {
         idiotBetting.claimPrize();
         assertEq(player2.balance, 0, "err: Player2 balance should be 0.");
 
-        // player2 tries to claim, should not revert
+        // player3 tries to claim, should not revert
         vm.prank(player3);
         idiotBetting.claimPrize();
         assertEq(

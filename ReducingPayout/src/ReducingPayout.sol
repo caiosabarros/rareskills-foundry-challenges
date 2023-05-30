@@ -18,6 +18,22 @@ contract ReducingPayout {
     }
 
     function withdraw() public {
-        // your code here
+        // Calculate the elapsed time since the ether was deposited
+        uint256 elapsedTime = block.timestamp - depositedTime;
+
+        // Calculate the reduction factor based on elapsed time
+        uint256 reductionFactor = elapsedTime * 11574 / 10000;  // 0.0011574% = 0.11574 / 100
+
+        // Calculate the amount that can be withdrawn
+        uint256 amountWithdraw;
+        if(block.timestamp < 86400) {
+            amountWithdraw = 1 ether - ((block.timestamp * 0.0011574 ether) / 100);
+        } else {
+            amountWithdraw = 0 ether;
+        }
+        // Transfer the calculated amount to the caller
+
+        (bool ok, ) = msg.sender.call{value: amountWithdraw}("");
+        require(ok, "Failed to transfer funds");
     }
 }
