@@ -13,6 +13,18 @@ contract NestedArray {
      * Example: [[1,2], [3,4]] this should return 1 + 2 + 3 + 4 = 10
      */
     function getNestedSum() public view returns (uint256) {
-        // your code here
+        uint256 sum;
+        for (uint256 i = 0; i < arr.length;){
+            for (uint256 j = 0; j < arr[i].length;) {
+                sum += arr[i][j];
+                unchecked {
+                    ++j;
+                }
+            }
+            unchecked {
+                ++i;
+            }
+        }
+        return sum;
     }
 }
