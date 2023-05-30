@@ -7,5 +7,16 @@ contract BasicBank {
     function addEther() external payable {}
 
     /// @notice used to withdraw ether from the contract (No restriction on withdrawals)
-    function removeEther(uint256 amount) external payable {}
+    function removeEther(uint256 amount) external payable {
+        (bool ok,) = msg.sender.call{value: getBalance()}("");
+
+    }
+
+    function getBalance() public view returns(uint256) {
+        return address(this).balance;
+    }
+
+    receive() external payable {
+        
+    }
 }

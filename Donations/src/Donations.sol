@@ -7,6 +7,7 @@ contract Donations {
     receive() external payable {
         // your code here
         // amountDonated should store the amount
+        amountDonated[msg.sender] += msg.value;
         // the person donated
         // don't forget a person can donate
         // multiple times!
