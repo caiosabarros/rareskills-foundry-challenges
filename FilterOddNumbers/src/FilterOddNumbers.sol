@@ -15,6 +15,27 @@ contract FilterOddNumbers {
         view
         returns (uint256[] memory)
     {
-        // your code here
+        uint8 counter;
+        for(uint256 i=0; i<_arr.length;){
+            if(_arr[i] % 2 == 0){
+                ++counter;
+            }
+            unchecked {
+                ++i;
+            }
+        }
+        uint256[] memory arr = new uint256[](counter);
+        
+        counter = 0;
+        for(uint256 i=0; i<_arr.length;) {
+            if(_arr[i] % 2 == 0){
+                arr[counter] = _arr[i];
+                ++counter;
+            }
+            unchecked {
+                ++i;
+            }
+        }
+        return arr;
     }
 }
